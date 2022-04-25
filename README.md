@@ -7,6 +7,8 @@ The course Real-Time Web is about learning how to build a real-time application.
 -   [Sketch](#sketch)
 -   [Chosen API](#chosen-api)
 -   [Wishlist](#wishlist)
+-   [Any issues?](#any-issues)
+-   [License](#license)
 
 ## Concepts
 ### Concept: Rijksmuseum quiz 1
