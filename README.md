@@ -11,6 +11,6 @@ I want to create a quiz using the Rijksdata API. The user will get to see the th
 I want to create a quiz using the Rijksdata API. The user will get to see a painting and the name of the artist. Then, the user can guess the name of the painting out of three answers. If the user gets the answer right, they will get a point.
 
 ## Chosen API
-For this project, I'm using the Rijksdata API. To start using the data, you need to obtain an API key by registering for a Rijksstudio account. You will be given a key instantly upon request, which you can find at the advanced settings of your Rijksstudio account. Some of the data elements that you can use from the API are the webImage to obtain the image, title for a short description, longTitle for a long description, principalOrFirstMaker for the name of the artist and id, for the id of the painting.
+For this project, I'm using the Rijksdata API. To start using the data, you need to obtain an API key by registering for a Rijksstudio account. You will be given a key instantly upon request, which you can find at the advanced settings of your Rijksstudio account. Some of the data elements that you can use from the API are the ```webImage``` to obtain the image, ```title``` for a short description, ```longTitle``` for a long description, ```principalOrFirstMaker``` for the name of the artist and ```id```, for the id of the painting.
 
 ## Data modelling
