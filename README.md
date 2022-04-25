@@ -1,4 +1,4 @@
-# Real time web
+# Rijksquiz
 The course Real-Time Web is about learning how to build a real-time application.
 
 ## Concept: Rijksmuseum quiz 1
