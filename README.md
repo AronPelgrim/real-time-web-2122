@@ -17,10 +17,20 @@ I want to create a multyplayer quiz using the Rijksdata API. Each user user will
 For this project, I'm using the Rijksdata API. To start using the data, you need to obtain an API key by registering for a Rijksstudio account. You will be given a key instantly upon request, which you can find at the advanced settings of your Rijksstudio account. Some of the data elements that you can use from the API are the ```webImage``` to obtain the image, ```title``` for a short description, ```longTitle``` for a long description, ```principalOrFirstMaker``` for the name of the artist and ```id```, for the id of the painting.
 
 ## Wishlist
-*Must haves*
+**Must haves**
 - [ ] Choosing a username.
-- [ ] Chat function with for answers.
+- [ ] Chat function for answers.
 - [ ] Showing images with API.
 - [ ] Check if anwser matches the painting.
 
-*Should haves*
+**Should haves**
+- [ ] Show user if other user is connected.
+- [ ] Show user if other user is disconnected.
+- [ ] Have a scoreboard.
+- [ ] Give feedback of the right answer if answer is wrong.
+- [ ] Give feedback if the answer is correct.
+- [ ] Button to go to next question.
+
+**Could haves**
+- [ ] Go to next question with right answer.
+- [ ] Create groups for different quizzes.
