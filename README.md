@@ -33,4 +33,14 @@ For this project, I'm using the Rijksdata API. To start using the data, you need
 
 **Could haves**
 - [ ] Go to next question with right answer.
+- [ ] Giving a hint with wrong answer.
+
+**Would haves**
+- [ ] Filter for quiz categories.
 - [ ] Create groups for different quizzes.
+
+## Any issues?
+You can create an issue in this repository to let me know what's wrong.
+
+ ## License
+[MIT](https://github.com/AronPelgrim/real-time-web-2122/blob/main/LICENSE)
