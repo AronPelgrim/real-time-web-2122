@@ -7,7 +7,7 @@ I want to create a multyplayer quiz using the Rijksdata API. Each user will get 
 ## Concept: Rijksmuseum quiz 2
 I want to create a multyplayer quiz using the Rijksdata API. Each user user will get to see the three paintings of the same artist. The user will have to guess which artist matches these three paintings. The user will get three chances to get the answer right. If the user gets the answer right, they will get a point.
 
-## Concept: Rijksmuseum quiz 3
+## Concept: Rijksmuseum quiz 3 (chosen)
 I want to create a multyplayer quiz using the Rijksdata API. Each user user will get to see a painting and the name of the artist. Then, the user can guess the name of the painting out of three answers. If the user gets the answer right, they will get a point.
 
 ## Sketch
