@@ -1,0 +1,22 @@
+{
+  "name": "real-time-web-2122",
+  "version": "1.0.0",
+  "description": "Rijksquiz for real-time-web-2122",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AronPelgrim/real-time-web-2122.git"
+  },
+  "author": "Aron Pelgrim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AronPelgrim/real-time-web-2122/issues"
+  },
+  "homepage": "https://github.com/AronPelgrim/real-time-web-2122#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
