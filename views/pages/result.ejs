@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/head') %>
+    <body>
+        <%- include('../partials/header') %>
+        <main>
+            <%- include('../partials/form') %>
+            <h1 class="visible"><%- title %></h1>
+            <ul class="">
+                <% data.forEach(function(paintings) { %>
+                    <li>
+                        <a href="schilderijen/<%- paintings.objectNumber %>">
+                        <% if (paintings.webImage) { %>
+                            <img src="<%- paintings.webImage.url.slice(0, -3)+"=s1000" %>"></a>
+                        <% } %>
+                        <p><%- paintings.longTitle %></p>
+                    </li>
+                <% }) %>  
+            </ul>
+        </main>
+        <%- include('../partials/serviceWorker') %>
+    </body>
+</html>
