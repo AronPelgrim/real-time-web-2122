@@ -45,14 +45,14 @@ socket.on('username', username => {
 socket.on('disconnected', () => {
   var element = document.createElement('li');
   element.classList.add('disc');
-  messages.appendChild(Object.assign(element, { textContent: "A user is disconnected" }))
+  messages.appendChild(Object.assign(element, { textContent: "A player is disconnected" }))
   messages.scrollTop = messages.scrollHeight
 })
 
 socket.on('connected', () => {
   var element = document.createElement('li');
   element.classList.add('conn');
-  messages.appendChild(Object.assign(element, { textContent: "A new user is connected" }))
+  messages.appendChild(Object.assign(element, { textContent: "A new player is connected" }))
   messages.scrollTop = messages.scrollHeight
 })
 

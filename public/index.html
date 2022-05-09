@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barebone chat</title>
-  <link rel="stylesheet" href="/style.css">
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Rijksquiz</title>
+	<link href="/css/styles.css" rel="stylesheet">
+	<script src="/socket.io/socket.io.js" defer></script> 
+	<script src="/js/script.js" defer></script>
 </head>
-
 <body>
-
-  <main>
-    <section>
-      <h1>Le Chat <span>waar je niet weet met wie je chat...</span></h1>
-      <ul></ul>
-      <form>
-        <input type="text" autocomplete="off">
-        <button><span>Send</span></button>
-      </form>
-    </section>
-  </main>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/script.js"></script>
+	<header>
+		<a href="/">
+		<h1>Art @ Home: Rijksquiz</h1></a>
+	</header>
+	<main>
+		<section>
+			<ul></ul>
+			<form>
+				<input autocomplete="off" type="text"> <button><span>Send</span></button>
+			</form>
+		</section>
+	</main>
 </body>
-
 </html>
