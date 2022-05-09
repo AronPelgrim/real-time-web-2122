@@ -35,8 +35,8 @@ main {
 	align-items: center;
 }
 section {
-	width: 25rem;
-	height: 35rem;
+	width: 35rem;
+	height: 40rem;
 	background: rgba(255, 255, 255, 0.6);
 	backdrop-filter: blur(1rem);
 	border: 1px solid rgba(255, 255, 255, 0.2);
@@ -45,7 +45,7 @@ section {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 7rem;
+	margin-top: 5rem;
 }
 section h1 {
 	margin: 0;
@@ -60,8 +60,11 @@ section ul {
 	padding: 0.5em;
 	list-style-type: none;
 	flex-grow: 2;
-	width: 23em;
+	width: 32em;
 	overflow-y: scroll;
+}
+section ul li img {
+  max-width: 32rem;
 }
 section ul>li {
 	padding: 0.5rem 1rem;
@@ -70,7 +73,7 @@ section ul>li {
 section form {
 	margin: 0 0 1rem 0;
 	padding: 0;
-	width: 18rem;
+	width: 32rem;
 	height: 2rem;
 	display: flex;
 }

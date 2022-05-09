@@ -16,7 +16,19 @@
 	</header>
 	<main>
 		<section>
-			<ul></ul>
+			<ul>
+                <% data.forEach(function(paintings) { %>
+                    <li>
+                        <% if (paintings.webImage) { %>
+                            <img src="<%- paintings.webImage.url.slice(0, -3)+"=s1000" %>">
+                        <% } %>
+                        <p><%- paintings.longTitle %></p>
+                    </li>
+                <% }) %>  
+            </ul>
+		</section>
+		<section>
+			<ul class="answer"></ul>
 			<form>
 				<input autocomplete="off" type="text"> <button><span>Send</span></button>
 			</form>

@@ -2,17 +2,17 @@
   "name": "real_time_web",
   "version": "0.0.1",
   "description": "webapp",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DustinSchouten/real-time-web-2122.git"
   },
-  "author": "Dustin Schouten",
-  "license": "ISC",
+  "author": "Aron Pelgrim",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DustinSchouten/real-time-web-2122/issues"
   },
@@ -21,6 +21,7 @@
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "node-fetch": "^3.2.4",
     "socket.io": "^4.4.1"
   }
 }

@@ -10,7 +10,7 @@ document.querySelector('form').addEventListener('submit', event => {
     }
 })
 
-let messages = document.querySelector('section ul')
+let messages = document.querySelector('section .answer')
 
 document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault()
