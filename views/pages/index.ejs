@@ -22,12 +22,14 @@
                         <% if (paintings.webImage) { %>
                             <img src="<%- paintings.webImage.url.slice(0, -3)+"=s1000" %>">
                         <% } %>
-                        <p><%- paintings.longTitle %></p>
+                        <h1><%- paintings.title %></h1>
+						<h2><%- paintings.principalOrFirstMaker %></h2>
                     </li>
                 <% }) %>  
             </ul>
 		</section>
 		<section>
+			<h1>Raad de kunstenaar</h1>
 			<ul class="answer"></ul>
 			<form>
 				<input autocomplete="off" type="text"> <button><span>Send</span></button>

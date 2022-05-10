@@ -1,5 +1,8 @@
-let socket = io()
-let input = document.querySelector('input')
+const socket = io()
+const input = document.querySelector('input')
+const feedback = document.querySelector('h1')
+let rightAnswer = document.querySelector('h2')
+let guessing = document.querySelector('.guessing')
 
 const username = prompt("Please enter a username: ", "");
 document.querySelector('form').addEventListener('submit', event => {
@@ -15,7 +18,6 @@ let messages = document.querySelector('section .answer')
 document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault()
   if (input.value) {
-      console.log(input)
     socket.emit('message', input.value)
     addMessage(input.value)
     input.value = ''
@@ -23,15 +25,23 @@ document.querySelector('form').addEventListener('submit', event => {
 })
 
 function addMessage(message) {
-    messages.appendChild(Object.assign(document.createElement('li'), { textContent: message }))
-    messages.scrollTop = messages.scrollHeight
+  let guess = document.createElement('li')
+  guess.classList.add('guessing');
+  messages.appendChild(Object.assign(guess, { textContent: message }))
+  messages.scrollTop = messages.scrollHeight
+  setTimeout(() => {
+    guess.remove()
+  }, 5000)
 }
 
 function addUsername(username) {
-    var element = document.createElement('li');
-    element.classList.add('username');
-    messages.appendChild(Object.assign(element, { textContent: username }))
-    messages.scrollTop = messages.scrollHeight
+  let user = document.createElement('li')
+  user.classList.add('username');
+  messages.appendChild(Object.assign(user, { textContent: username }))
+  messages.scrollTop = messages.scrollHeight
+  setTimeout(() => {
+    user.remove()
+  }, 5000)
 }
 
 socket.on('message', message => {
@@ -45,8 +55,11 @@ socket.on('username', username => {
 socket.on('disconnected', () => {
   var element = document.createElement('li');
   element.classList.add('disc');
-  messages.appendChild(Object.assign(element, { textContent: "A player is disconnected" }))
+  messages.appendChild(Object.assign(element, { textContent:  `is disconnected` }))
   messages.scrollTop = messages.scrollHeight
+  setTimeout(() => {
+    element.remove()
+  }, 5000)
 })
 
 socket.on('connected', () => {
@@ -54,6 +67,9 @@ socket.on('connected', () => {
   element.classList.add('conn');
   messages.appendChild(Object.assign(element, { textContent: "A new player is connected" }))
   messages.scrollTop = messages.scrollHeight
+  setTimeout(() => {
+    element.remove()
+  }, 5000)
 })
 
 input.addEventListener("keypress", () => {
