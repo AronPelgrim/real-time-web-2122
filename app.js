@@ -15,17 +15,27 @@ app.set('view engine', 'ejs')
 
 app.set('views', './views/pages')
 
-const artists = ['Willem Claesz. Heda', 'Joachim Bueckelaer', 'Paul Joseph Constantin Gabriël', 'Lucas van Leyden']
+const artists = ['Rembrandt van Rijn', 'Frans Hals', 'Johannes Vermeer', 'Vincent van Gogh']
 
 let currentArtist = null
 
 const fetchPainting = async () => {
-	return fetchJson('https://www.rijksmuseum.nl/api/nl/collection?key=S0VK6DCj').then((data) => {
-            let artist = artists[Math.floor(Math.random() * artists.length)]
-            currentArtist = artist
-           let filteredData = data.filter(artObject => artObject.principalOrFirstMaker.includes(currentArtist))
-		return filteredData;
+	return fetchJson(`https://www.rijksmuseum.nl/api/nl/collection?key=S0VK6DCj&ps=100&imgonly=true&toppieces=true`)   
+    .then((data) => {
+        let artist = artists[Math.floor(Math.random() * artists.length)]
+        currentArtist = artist
+
+        let filteredData = data.filter(artObject => artObject.principalOrFirstMaker.includes(currentArtist))
+        
+		return filteredData
 	})
+}
+
+const fetchJson = async (url) => {
+    return await fetch(url)
+      .then((response) => response.json())
+      .then((body) => body.artObjects) 
+      .catch((error) => error)
 }
 
 app.get('/', (req, res) => {
@@ -36,16 +46,6 @@ app.get('/', (req, res) => {
     })
 })
 
-async function fetchJson(url) {
-    return await fetch(url)
-      .then((response) => response.json())
-      .then((body) => body.artObjects) 
-      .catch((error) => error)
-}
-
-let users = [];
-let round = 0;
-
 io.on('connection', (socket) => {
     io.emit('connected')
 
@@ -53,16 +53,16 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('message', message)
 
         if (message == currentArtist) {
-            console.log('Goed geraden');
-            const correctMessage = `You guessed right! The answer was ${currentArtist}`
+            const correctMessage = `Right guess! The answer was ${currentArtist}`
+
             io.emit('message', correctMessage)
-            round = round + 1
             
             fetchPainting().then((data) => {
-                socket.emit('new-painting', data);
-            });
+                socket.emit('new-painting', data)
+            })
         } else {
-            const wrongMessage = `You guessed wrong! Take another guess :)`
+            const wrongMessage = `Wrong guess! :(`
+
             io.emit('message', wrongMessage)
         }
     })

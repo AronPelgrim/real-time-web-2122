@@ -55,9 +55,6 @@ section h1 {
 	text-transform: uppercase;
 	font-size: 1.1rem;
 }
-/* section h2 {
-	display: none;
-} */
 section ul {
 	margin: 0;
 	padding: 0.5em;
@@ -112,5 +109,10 @@ section form>button:hover {
 	padding-left: 1rem;
 }
 .username {
-	color: red;
+	color: green;
+	font-weight: bold;
+}
+.typing_text {
+	font-style: italic;
+	font-weight: lighter;
 }

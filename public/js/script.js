@@ -1,13 +1,10 @@
 const socket = io()
 const input = document.querySelector('input')
-const feedback = document.querySelector('h1')
-let rightAnswer = document.querySelector('h2')
-let guessing = document.querySelector('.guessing')
 let painting = document.querySelector('img')
 let messages = document.querySelector('section .answer')
 let title = document.querySelector('li h1')
+const username = prompt("Please enter a username: ", "")
 
-const username = prompt("Please enter a username: ", "");
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault()
     if (username) {
@@ -25,9 +22,13 @@ document.querySelector('form').addEventListener('submit', event => {
   }
 })
 
-function addMessage(message) {
+input.addEventListener("keypress", () => {
+  socket.emit("typing")
+})
+
+const addMessage = (message) => {
   let guess = document.createElement('li')
-  guess.classList.add('guessing');
+  guess.classList.add('guessing')
   messages.appendChild(Object.assign(guess, { textContent: message }))
   messages.scrollTop = messages.scrollHeight
   setTimeout(() => {
@@ -35,9 +36,9 @@ function addMessage(message) {
   }, 5000)
 }
 
-function addUsername(username) {
+const addUsername = (username) => {
   let user = document.createElement('li')
-  user.classList.add('username');
+  user.classList.add('username')
   messages.appendChild(Object.assign(user, { textContent: username }))
   messages.scrollTop = messages.scrollHeight
   setTimeout(() => {
@@ -54,9 +55,9 @@ socket.on('username', username => {
 })
 
 socket.on('disconnected', () => {
-  var element = document.createElement('li');
-  element.classList.add('disc');
-  messages.appendChild(Object.assign(element, { textContent:  `is disconnected` }))
+  const element = document.createElement('li')
+  element.classList.add('disc')
+  messages.appendChild(Object.assign(element, { textContent:  `Opponent is disconnected` }))
   messages.scrollTop = messages.scrollHeight
   setTimeout(() => {
     element.remove()
@@ -64,9 +65,9 @@ socket.on('disconnected', () => {
 })
 
 socket.on('connected', () => {
-  var element = document.createElement('li');
-  element.classList.add('conn');
-  messages.appendChild(Object.assign(element, { textContent: "A new player is connected" }))
+  const element = document.createElement('li')
+  element.classList.add('conn')
+  messages.appendChild(Object.assign(element, { textContent: `A new player is connected` }))
   messages.scrollTop = messages.scrollHeight
   setTimeout(() => {
     element.remove()
@@ -74,21 +75,17 @@ socket.on('connected', () => {
 })
 
 socket.on('new-painting', (data) => {
-  painting.src = data[0].webImage.url;
-  title.innerHTML = data[0].title;
-  console.log(data[0].principalOrFirstMaker);
-})
-
-input.addEventListener("keypress", () => {
-  socket.emit("typing")
+  painting.src = data[0].webImage.url
+  title.innerHTML = data[0].title
+  console.log(data[0].principalOrFirstMaker)
 })
 
 socket.on("typing", () => {
   if (document.querySelector('.typing_text') == null) {
-    var element = document.createElement('li');
-    element.classList.add('typing_text');
-    messages.appendChild(Object.assign(element, { textContent: 'typing' }))
-    messages.scrollTop = messages.scrollHeight;
+    var element = document.createElement('li')
+    element.classList.add('typing_text')
+    messages.appendChild(Object.assign(element, { textContent: `Opponent is typing` }))
+    messages.scrollTop = messages.scrollHeight
 }
   setTimeout(() => {
     element.remove()
