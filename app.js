@@ -14,20 +14,35 @@ app.set('view engine', 'ejs')
 
 app.set('views', './views/pages')
 
-const artists = ['Rembrandt van Rijn', 'Adriaen van Wesel"', 'Wenzel Jamnitzer', 'Piero di Cosimo']
+// apicall uitvoeren op 'goed geraden'
+// fetchPainting().then((data) => {
+// 	socket.emit('new-painting', data);
+// });
+
+// // clientside --> nieuwe painting daadwerkelijk laten zien
+// socket.on('new-painting', (data) => {
+// painting.innerHTML =
+// })
+
+const artists = ['Willem Claesz. Heda', 'Joachim Bueckelaer', 'Paul Joseph Constantin Gabriël', 'Lucas van Leyden']
 
 let currentArtist = null
 
+const fetchPainting = async () => {
+	return fetchJson('https://www.rijksmuseum.nl/api/nl/collection?key=S0VK6DCj').then((data) => {
+        if(!currentArtist) {
+            let artist = artists[Math.floor(Math.random() * artists.length)]
+            currentArtist = artist
+           }
+           let filteredData = data.filter(artObject => artObject.principalOrFirstMaker.includes(currentArtist))
+		return filteredData;
+	})
+}
+
 app.get('/', (req, res) => {
-    fetchJson(`https://www.rijksmuseum.nl/api/nl/collection?key=S0VK6DCj`)
-    .then(function (data) {
-       if(!currentArtist) {
-        const artist = artists[Math.floor(Math.random() * artists.length)]
-        currentArtist = artist
-       }
-       const filteredData = data.filter(artObject => artObject.principalOrFirstMaker.includes(currentArtist))
+    fetchPainting().then((data) => {
         res.render('index', {
-            data: filteredData,
+            data,
         })
     })
 })
