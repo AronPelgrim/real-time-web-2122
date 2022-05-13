@@ -3,6 +3,9 @@ const input = document.querySelector('input')
 const feedback = document.querySelector('h1')
 let rightAnswer = document.querySelector('h2')
 let guessing = document.querySelector('.guessing')
+let painting = document.querySelector('img')
+let messages = document.querySelector('section .answer')
+let title = document.querySelector('li h1')
 
 const username = prompt("Please enter a username: ", "");
 document.querySelector('form').addEventListener('submit', event => {
@@ -12,8 +15,6 @@ document.querySelector('form').addEventListener('submit', event => {
         addUsername(username)
     }
 })
-
-let messages = document.querySelector('section .answer')
 
 document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault()
@@ -70,6 +71,12 @@ socket.on('connected', () => {
   setTimeout(() => {
     element.remove()
   }, 5000)
+})
+
+socket.on('new-painting', (data) => {
+  painting.src = data[0].webImage.url;
+  title.innerHTML = data[0].title;
+  console.log(data[0].principalOrFirstMaker);
 })
 
 input.addEventListener("keypress", () => {

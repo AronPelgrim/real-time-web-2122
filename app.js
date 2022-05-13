@@ -6,6 +6,7 @@ const io = require('socket.io')(http)
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const ejs = require('ejs')
 const { Console } = require('console')
+const { title } = require('process')
 const port = process.env.PORT || 4242
 
 app.use(express.static(path.resolve('public')))
@@ -14,26 +15,14 @@ app.set('view engine', 'ejs')
 
 app.set('views', './views/pages')
 
-// apicall uitvoeren op 'goed geraden'
-// fetchPainting().then((data) => {
-// 	socket.emit('new-painting', data);
-// });
-
-// // clientside --> nieuwe painting daadwerkelijk laten zien
-// socket.on('new-painting', (data) => {
-// painting.innerHTML =
-// })
-
 const artists = ['Willem Claesz. Heda', 'Joachim Bueckelaer', 'Paul Joseph Constantin Gabriël', 'Lucas van Leyden']
 
 let currentArtist = null
 
 const fetchPainting = async () => {
 	return fetchJson('https://www.rijksmuseum.nl/api/nl/collection?key=S0VK6DCj').then((data) => {
-        if(!currentArtist) {
             let artist = artists[Math.floor(Math.random() * artists.length)]
             currentArtist = artist
-           }
            let filteredData = data.filter(artObject => artObject.principalOrFirstMaker.includes(currentArtist))
 		return filteredData;
 	})
@@ -68,7 +57,10 @@ io.on('connection', (socket) => {
             const correctMessage = `You guessed right! The answer was ${currentArtist}`
             io.emit('message', correctMessage)
             round = round + 1
-            console.log(round);
+            
+            fetchPainting().then((data) => {
+                socket.emit('new-painting', data);
+            });
         } else {
             const wrongMessage = `You guessed wrong! Take another guess :)`
             io.emit('message', wrongMessage)
