@@ -48,12 +48,12 @@ section {
 	margin-top: 5rem;
 }
 section h1 {
-	margin: 0;
+	margin-bottom: .5rem;
 	padding: 0;
 	padding-top: 1rem;
-	font-weight: lighter;
+	font-weight: normal;
 	text-transform: uppercase;
-	font-size: 1rem;
+	font-size: 1.1rem;
 }
 section ul {
 	margin: 0;
@@ -64,7 +64,7 @@ section ul {
 	overflow-y: scroll;
 }
 section ul li img {
-  max-width: 32rem;
+  max-width: 30rem;
 }
 section ul>li {
 	padding: 0.5rem 1rem;
@@ -109,5 +109,10 @@ section form>button:hover {
 	padding-left: 1rem;
 }
 .username {
-	color: red;
+	color: green;
+	font-weight: bold;
+}
+.typing_text {
+	font-style: italic;
+	font-weight: lighter;
 }
